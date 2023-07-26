@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrivacyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resources([
         'about' => AboutController::class,
-       
+       'privacy' => PrivacyController::class
     ]);
 });
 

@@ -64,7 +64,15 @@
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{route('privacy.index')}}" class="nav-link {{$route == 'privacy.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Privacy
+                
+              </p>
+            </a>
+          </li>
 
           <li class="nav-header">EXAMPLES</li>
 

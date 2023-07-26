@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Privacy;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\PrivacyRequest;
 class PrivacyController extends Controller
 {
     /**
@@ -15,6 +15,9 @@ class PrivacyController extends Controller
     public function index()
     {
         //
+        $privacy = Privacy::orderBy('id', 'desc')->first();
+        $privacyCount = Privacy::count();
+        return view('backend.privacy.index',['privacy'=>$privacy, 'privacyCount'=>$privacyCount]);
     }
 
     /**
@@ -25,6 +28,7 @@ class PrivacyController extends Controller
     public function create()
     {
         //
+        return view('backend.privacy.create');
     }
 
     /**
@@ -33,9 +37,12 @@ class PrivacyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PrivacyRequest $request)
     {
         //
+        $privacy = Privacy::create($request->all());
+       
+        return redirect()->route('privacy.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -58,6 +65,9 @@ class PrivacyController extends Controller
     public function edit(Privacy $privacy)
     {
         //
+        return view('backend.privacy.edit',[
+            'edit' => $privacy
+        ]);
     }
 
     /**
@@ -67,9 +77,12 @@ class PrivacyController extends Controller
      * @param  \App\Models\Privacy  $privacy
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Privacy $privacy)
+    public function update(PrivacyRequest $request, Privacy $privacy)
     {
         //
+        $privacy->update($request->all());
+       
+        return redirect()->route('privacy.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -81,5 +94,8 @@ class PrivacyController extends Controller
     public function destroy(Privacy $privacy)
     {
         //
+        $privacy->update($request->all());
+       
+        return redirect()->route('privacy.index')->with('success','Data inserted successfully');
     }
 }
