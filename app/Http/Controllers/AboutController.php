@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use Illuminate\Http\Request;
 use App\Http\Requests\AboutRequest;
+use Image;
 class AboutController extends Controller
 {
     /**
@@ -41,7 +42,9 @@ class AboutController extends Controller
     {
         //
         $about = About::create($request->all());
-       
+        if ($request->hasFile('logo')) {
+            $this->_uploadImage($request, $about);
+        }
         return redirect()->route('about.index')->with('success','Data inserted successfully');
     }
 
@@ -81,7 +84,10 @@ class AboutController extends Controller
     {
         //
         $about->update($request->all());
-       
+        if ($request->hasFile('logo')) {
+            @unlink('storage/'.$slider->logo);
+            $this->_uploadImage($request, $about);
+        }
         return redirect()->route('about.index')->with('success','Data inserted successfully');
     }
 
@@ -94,8 +100,23 @@ class AboutController extends Controller
     public function destroy(About $about)
     {
         //
+        if(!empty($about->logo));
+        @unlink('storage/'.$about->logo);
         $about->update($request->all());
        
         return redirect()->route('about.index')->with('success','Data inserted successfully');
+    }
+
+    private function _uploadImage($request, $about)
+    {
+        # code...
+        if( $request->hasFile('logo') ) {
+            $image = $request->file('logo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(800, 500)->save('storage/' . $filename);
+            $about->logo = $filename;
+            $about->save();
+        }
+       
     }
 }

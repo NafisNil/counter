@@ -65,6 +65,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('slider.index')}}" class="nav-link {{$route == 'slider.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Slider
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('privacy.index')}}" class="nav-link {{$route == 'privacy.index'?'active':''}}">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -74,6 +83,44 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('term.index')}}" class="nav-link {{$route == 'term.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Term
+                
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('location.index')}}" class="nav-link {{$route == 'location.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Location
+                
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('refund.index')}}" class="nav-link {{$route == 'refund.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Refund Policy
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('event.index')}}" class="nav-link {{$route == 'event.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Event
+                
+              </p>
+            </a>
+          </li>
           <li class="nav-header">EXAMPLES</li>
 
 

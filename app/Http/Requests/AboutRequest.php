@@ -25,7 +25,8 @@ class AboutRequest extends FormRequest
     {
         return [
             //
-            'desc' => 'required'
+            'desc' => 'required',
+            'logo' => 'mimes:jpg,png,svg,jpeg,webp'
         ];
     }
 }

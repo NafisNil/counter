@@ -41,7 +41,7 @@
                   <tr>
                     <th>#</th>
                     <th>About us</th>
-                
+                    <th>Image</th>
                     <th>Action</th>
                    
                   </tr>
@@ -56,7 +56,7 @@
                   <tr>
                     <td>#1</td>
                     <td>{!!@$about->desc!!}</td>
-                   
+                    <td> <img src="{{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}}" alt="{{$about->title}}" style="max-width:250px"></td>
                    <td>
                      
                   
@@ -80,7 +80,7 @@
                   <tr>
                     <th>#</th>
                     <th>About us</th>
-                   
+                    <th>Image</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>
